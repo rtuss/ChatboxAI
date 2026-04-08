@@ -385,43 +385,43 @@ export default function FloatingChat() {
             )}
           </div>
 
-          <div className={styles.chatFooter}>
-  <div className={styles.chatFooter}>
-  <div className={styles.composerBar}>
-    <button
-      type="button"
-      className={styles.plusButton}
-      aria-label="Thêm"
-    >
-      +
-    </button>
+          {currentStep === "chatView" && (
+            <div className={styles.chatFooter}>
+              <div className={styles.composerBar}>
+                <button
+                  type="button"
+                  className={styles.plusButton}
+                  aria-label="Thêm"
+                >
+                  +
+                </button>
 
-    <input
-      type="text"
-      value={inputMessage}
-      onChange={(e) => setInputMessage(e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" && !isLoading) {
-          handleSendMessage(inputMessage);
-        }
-      }}
-      placeholder="Nhập tin nhắn của bạn"
-      disabled={isLoading}
-      className={styles.chatInput}
-    />
+                <input
+                  type="text"
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !isLoading) {
+                      handleSendMessage(inputMessage);
+                    }
+                  }}
+                  placeholder="Nhập tin nhắn của bạn"
+                  disabled={isLoading}
+                  className={styles.chatInput}
+                />
 
-    <button
-      onClick={() => handleSendMessage(inputMessage)}
-      disabled={isLoading || !inputMessage.trim()}
-      className={styles.sendButton}
-      aria-label="Gửi tin nhắn"
-      type="button"
-    >
-      ➤
-    </button>
-  </div>
-</div>
-</div>
+                <button
+                  onClick={() => handleSendMessage(inputMessage)}
+                  disabled={isLoading || !inputMessage.trim()}
+                  className={styles.sendButton}
+                  aria-label="Gửi tin nhắn"
+                  type="button"
+                >
+                  ➤
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <button
