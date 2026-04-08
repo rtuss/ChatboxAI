@@ -6,28 +6,28 @@ import FloatingChat from "./components/chat/FloatingChat";
 const features = [
   {
     id: 1,
-    image: "/images/home/feature-1 (2).png",
+    image: "/images/Home/feature-1 (2).png",
     title: "GIAO DIỆN DỄ SỬ DỤNG",
     description:
       'Giao diện thân thiện, đẹp mắt. Các tính năng được thiết kế linh hoạt dành cho những khách hàng "khó tính" nhất',
   },
   {
     id: 2,
-    image: "/images/home/feature-4.png",
+    image: "/images/Home/feature-4.png",
     title: "NỀN TẢNG CÔNG NGHỆ CLOUD",
     description:
       "Truy cập bằng công nghệ Cloud nhanh chóng và miễn phí dung lượng. Cam kết bảo mật dữ liệu tuyệt đối an toàn",
   },
   {
     id: 3,
-    image: "/images/home/feature-2.png",
+    image: "/images/Home/feature-2.png",
     title: "KHÔNG NGỪNG ĐỔI MỚI",
     description:
       "Liên tục cập nhật và hoàn thiện các tính năng mới dựa trên nhu cầu của khách hàng",
   },
   {
     id: 4,
-    image: "/images/home/feature-3.png",
+    image: "/images/Home/feature-3.png",
     title: "ĐỒNG BỘ HÓA TẤT CẢ THIẾT BỊ",
     description:
       "Tự động đồng bộ hệ thống trên mọi thiết bị Laptop, Tablet, Mobile giúp khách hàng dễ dàng truy cập Online mọi lúc, mọi nơi",
@@ -37,25 +37,25 @@ const features = [
 const solutions = [
   {
     id: 1,
-    image: "/images/home/adminweb-1.png",
+    image: "/images/Home/adminweb-1.png",
     title: "HỆ THỐNG QUẢN LÝ WEB",
     desc: "Phiên bản Web hoàn hảo, đầy đủ tính năng, hệ thống vận hành liên phòng ban giúp doanh nghiệp chuyển đổi số toàn diện",
   },
   {
     id: 2,
-    image: "/images/home/app-admin.png",
+    image: "/images/Home/app-admin.png",
     title: "APP ADMIN",
     desc: "Dành cho CEO - Nhà quản lý nắm toàn bộ hệ thống vận hành của doanh nghiệp chỉ vài cú chạm",
   },
   {
     id: 3,
-    image: "/images/home/app-nhanvien.png",
+    image: "/images/Home/app-nhanvien.png",
     title: "APP NHÂN VIÊN",
     desc: "Dành cho nhân sự, quản lý chi tiết công việc, đơn hàng, lương, thưởng, chấm công, nghỉ phép, lộ trình thăng tiến, nhiệm vụ, qui định và các yêu cầu đề xuất",
   },
   {
     id: 4,
-    image: "/images/home/app-khachhang.png",
+    image: "/images/Home/app-khachhang.png",
     title: "APP KHÁCH HÀNG",
     desc: "Dành riêng cho khách hàng của mỗi doanh nghiệp du lịch. Tích hợp đầy đủ tính năng: booking, lịch trình, ví điện tử, tích điểm, nhận tin nhắn và thông báo",
   },
@@ -119,7 +119,7 @@ export default function HomePage() {
 
           <div className={styles.heroRight}>
             <Image
-              src="/images/home/nhanhtravel-home.png"
+              src="/images/Home/nhanhtravel-home.png"
               alt="Nhanh Travel dashboard"
               width={540}
               height={360}
@@ -133,15 +133,15 @@ export default function HomePage() {
             {features.map((feature) => (
               <div key={feature.id} className={styles.featureCard}>
                 <div className={styles.featureImageWrap}>
-  <div className={styles.featureImageBox}>
-    <Image
-      src={feature.image}
-      alt={feature.title}
-      fill
-      className={styles.featureImage}
-    />
-  </div>
-</div>
+                  <div className={styles.featureImageBox}>
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      fill
+                      className={styles.featureImage}
+                    />
+                  </div>
+                </div>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </div>
@@ -159,7 +159,7 @@ export default function HomePage() {
           <div className={styles.solutionContent}>
             <div className={styles.solutionImageCol}>
               <Image
-                src="/images/home/solution-main.png"
+                src="/images/Home/solution-main.png"
                 alt="Giải pháp Nhanh Travel"
                 width={520}
                 height={430}
@@ -192,6 +192,5 @@ export default function HomePage() {
         <FloatingChat />
       </div>
     </main>
-    
   );
 }
