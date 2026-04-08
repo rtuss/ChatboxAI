@@ -528,3 +528,150 @@
     padding: 12px 12px 8px;
   }
 }
+
+/* ===== DEMO FORM STYLES ===== */
+.demoFormCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.demoFormTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1976d2;
+  margin: 0 0 8px 0;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.demoField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.demoLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.3px;
+}
+
+.demoInput,
+.demoSelect,
+.demoTextarea {
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #333;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.demoInput::placeholder,
+.demoSelect::placeholder,
+.demoTextarea::placeholder {
+  color: #999;
+}
+
+.demoInput:focus,
+.demoSelect:focus,
+.demoTextarea:focus {
+  outline: none;
+  border-color: #1976d2;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.demoTextarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.demoCheckboxRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  user-select: none;
+}
+
+.demoCheckboxRow input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #1976d2;
+  flex-shrink: 0;
+}
+
+.demoCheckboxRow span a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.demoCheckboxRow span a:hover {
+  text-decoration: underline;
+}
+
+.demoError {
+  font-size: 12px;
+  color: #d32f2f;
+  margin: 0;
+  padding: 8px 12px;
+  background: #ffebee;
+  border-radius: 6px;
+  border-left: 3px solid #d32f2f;
+}
+
+.demoSuccess {
+  font-size: 12px;
+  color: #388e3c;
+  margin: 0;
+  padding: 8px 12px;
+  background: #e8f5e9;
+  border-radius: 6px;
+  border-left: 3px solid #388e3c;
+}
+
+.demoSubmitButton {
+  padding: 12px 16px;
+  background: #1976d2;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.demoSubmitButton:hover {
+  background: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.25);
+}
+
+.demoSubmitButton:active {
+  transform: translateY(0);
+}
+
+.demoSubmitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}

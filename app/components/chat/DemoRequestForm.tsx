@@ -21,61 +21,51 @@ export default function DemoRequestForm({
       <h3 className={styles.demoFormTitle}>ĐĂNG KÝ SỬ DỤNG DEMO</h3>
 
       <div className={styles.demoField}>
-        <label className={styles.demoLabel}>
-          Họ và tên <span className={styles.required}>*</span>
-        </label>
+        <label className={styles.demoLabel}>Họ và tên *</label>
         <input
           type="text"
           className={styles.demoInput}
+          placeholder="Nhập họ và tên"
           value={formData.fullName}
           onChange={(e) => onChange("fullName", e.target.value)}
-          placeholder="Nhập họ và tên"
         />
       </div>
 
       <div className={styles.demoField}>
-        <label className={styles.demoLabel}>
-          Email <span className={styles.required}>*</span>
-        </label>
+        <label className={styles.demoLabel}>Email *</label>
         <input
           type="email"
           className={styles.demoInput}
+          placeholder="Nhập email"
           value={formData.email}
           onChange={(e) => onChange("email", e.target.value)}
-          placeholder="Nhập email"
         />
       </div>
 
       <div className={styles.demoField}>
-        <label className={styles.demoLabel}>
-          Số điện thoại/Zalo <span className={styles.required}>*</span>
-        </label>
+        <label className={styles.demoLabel}>Số điện thoại/Zalo *</label>
         <input
           type="text"
           className={styles.demoInput}
+          placeholder="Ví dụ: 0912345678"
           value={formData.phone}
           onChange={(e) => onChange("phone", e.target.value)}
-          placeholder="Nhập số điện thoại/Zalo"
         />
       </div>
 
       <div className={styles.demoField}>
-        <label className={styles.demoLabel}>
-          Công ty <span className={styles.required}>*</span>
-        </label>
+        <label className={styles.demoLabel}>Công ty *</label>
         <input
           type="text"
           className={styles.demoInput}
+          placeholder="Nhập tên công ty"
           value={formData.company}
           onChange={(e) => onChange("company", e.target.value)}
-          placeholder="Nhập tên công ty"
         />
       </div>
 
       <div className={styles.demoField}>
-        <label className={styles.demoLabel}>
-          Dịch vụ quan tâm <span className={styles.required}>*</span>
-        </label>
+        <label className={styles.demoLabel}>Dịch vụ *</label>
         <select
           className={styles.demoSelect}
           value={formData.service}
@@ -106,13 +96,12 @@ export default function DemoRequestForm({
       </div>
 
       <div className={styles.demoField}>
-        <label className={styles.demoLabel}>Ghi chú</label>
+        <label className={styles.demoLabel}>Lời nhắc</label>
         <textarea
           className={styles.demoTextarea}
-          rows={3}
+          placeholder="Nhập lời nhắc hoặc câu hỏi của bạn"
           value={formData.note}
           onChange={(e) => onChange("note", e.target.value)}
-          placeholder="Nhập thêm nhu cầu nếu có"
         />
       </div>
 
@@ -122,7 +111,12 @@ export default function DemoRequestForm({
           checked={formData.agreed}
           onChange={(e) => onChange("agreed", e.target.checked)}
         />
-        <span>Tôi đồng ý để Nhanh Travel liên hệ tư vấn.</span>
+        <span>
+          Tôi đồng ý để Nhanh Travel liên hệ tư vấn.{" "}
+          <a href="#" onClick={(e) => e.preventDefault()}>
+            Chi tiết các quy định
+          </a>
+        </span>
       </label>
 
       {errorMessage && <p className={styles.demoError}>{errorMessage}</p>}

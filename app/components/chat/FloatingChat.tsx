@@ -6,6 +6,7 @@ import styles from "./FloatingChat.module.css";
 import WelcomeForm from "./welcomeForm";
 import QuickQuestions from "./QuickQuestions";
 import ChatMessages from "./ChatMessages";
+import DemoRequestForm from "./DemoRequestForm";
 import { quickQuestions } from "./chat.constants";
 import type { ChatStep, Message, DemoFormData, InlineFormType } from "./chat.types";
 
@@ -221,6 +222,7 @@ export default function FloatingChat() {
           text: "Vui lòng điền những thông tin dưới đây để đội ngũ tư vấn hỗ trợ anh/chị nhanh hơn.",
         },
       ]);
+      setActiveInlineForm("demoRequest");
 
       return;
     }
@@ -385,7 +387,7 @@ export default function FloatingChat() {
             )}
           </div>
 
-          {currentStep === "chatView" && (
+          {currentStep !== "welcomeForm" && (
             <div className={styles.chatFooter}>
               <div className={styles.composerBar}>
                 <button
