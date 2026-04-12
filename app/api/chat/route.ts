@@ -1,19 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
+import { companyKnowledge } from "@/app/lib/nhanhtravel-knowledge";
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
-      console.error("GEMINI_API_KEY is missing");
+      console.error("OPENAI_API_KEY is missing");
       return NextResponse.json(
-        { error: "Thiếu GEMINI_API_KEY trong file .env.local" },
+        { error: "Thiếu OPENAI_API_KEY trong file .env.local" },
         { status: 500 }
       );
     }
 
-    const ai = new GoogleGenAI({ apiKey });
+    const openai = new OpenAI({ apiKey });
 
     const body = await req.json();
     const { message } = body;
@@ -25,33 +26,55 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const prompt = `
-Bạn là chatbot tư vấn của Nhanh Travel.
-Chỉ trả lời các câu hỏi liên quan đến sản phẩm, tính năng, demo, bảng giá, CRM, app khách hàng, tour ghép/đoàn, kế toán, hoa hồng, nhà cung cấp, công nợ và giải pháp quản lý du lịch của công ty.
-Nếu câu hỏi ngoài phạm vi công ty, hãy từ chối lịch sự và hướng người dùng quay lại các chủ đề của công ty.
-Hãy trả lời ngắn gọn, rõ ràng, thân thiện, bằng tiếng Việt.
-Nếu chưa có thông tin chính xác thì nói rõ rằng đội ngũ tư vấn sẽ hỗ trợ thêm, không tự bịa thông tin.
+    const systemPrompt = `
+Bạn là chatbot tư vấn chính thức của Nhanh Travel.
 
-Câu hỏi của khách: ${message}
+Dưới đây là thông tin nội bộ của công ty:
+
+${companyKnowledge}
+
+Quy tắc trả lời:
+- Chỉ được trả lời dựa trên thông tin ở trên.
+- Không được tự bịa thêm thông tin.
+- Nếu câu hỏi không liên quan đến công ty, hãy trả lời:
+  "Xin lỗi, tôi chỉ hỗ trợ các câu hỏi liên quan đến Nhanh Travel."
+- Nếu câu hỏi có liên quan nhưng chưa có đủ dữ liệu chi tiết, hãy trả lời:
+  "Thông tin này cần đội ngũ tư vấn của Nhanh Travel hỗ trợ chi tiết hơn. Anh/chị vui lòng để lại nhu cầu để được hỗ trợ thêm."
+- Trả lời ngắn gọn, rõ ràng, thân thiện, bằng tiếng Việt.
 `;
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: prompt,
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
+        {
+          role: "user",
+          content: message,
+        },
+      ],
+      max_tokens: 500,
+      temperature: 0.2,
     });
+
+    const reply =
+      response.choices[0]?.message?.content ||
+      "Xin lỗi, hiện tại tôi chưa thể trả lời.";
 
     return NextResponse.json({
-      reply: response.text || "Xin lỗi, hiện tại tôi chưa thể trả lời.",
+      reply,
     });
   } catch (error: any) {
-    console.error("Gemini API full error:", error);
-    console.error("Gemini API status:", error?.status);
-    console.error("Gemini API message:", error?.message);
+    console.error("OpenAI API error:", error);
+    console.error("OpenAI API status:", error?.status);
+    console.error("OpenAI API message:", error?.message);
 
     const readableError =
-      error?.status === 503
+      error?.status === 429
         ? "Hệ thống AI đang quá tải tạm thời. Anh chị vui lòng thử lại sau ít phút."
-        : error?.message || "Có lỗi khi gọi Gemini API.";
+        : error?.message || "Có lỗi khi gọi OpenAI API.";
 
     return NextResponse.json(
       { error: readableError, status: error?.status || 500 },

@@ -3,6 +3,7 @@ export type ChatStep = "welcomeForm" | "quickQuestions" | "chatView";
 export type Message = {
   role: "user" | "bot";
   text: string;
+  timestamp?: number;
 };
 
 export type InlineFormType = "demoRequest" | null;

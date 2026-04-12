@@ -32,20 +32,27 @@ export default function ChatMessages({
 }: ChatMessagesProps) {
   return (
     <div className={styles.messageList}>
-      {messages.map((msg, index) => (
-        <div
-          key={index}
-          className={msg.role === "user" ? styles.userRow : styles.botRow}
-        >
+      {messages.map((msg, index) => {
+        const messageKey =
+          msg.timestamp !== undefined
+            ? `${msg.role}-${msg.timestamp}-${index}`
+            : `${msg.role}-${msg.text}-${index}`;
+
+        return (
           <div
-            className={
-              msg.role === "user" ? styles.userMessage : styles.botMessage
-            }
+            key={messageKey}
+            className={msg.role === "user" ? styles.userRow : styles.botRow}
           >
-            {msg.text}
+            <div
+              className={
+                msg.role === "user" ? styles.userMessage : styles.botMessage
+              }
+            >
+              {msg.text}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
 
       {isLoading && (
         <div className={styles.botRow}>

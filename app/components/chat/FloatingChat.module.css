@@ -244,28 +244,28 @@
 }
 
 .quickQuestionWrapper {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  max-width: 340px;
+  max-width: 600px;
   margin: 8px auto 0;
-  text-align: center;
+  text-align: left;
   padding-top: 12px;
 }
 
 .quickQuestionTitle {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
   font-weight: 700;
   color: #333;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .quickQuestionList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px 12px;
 }
 
 .quickQuestionBtn {
@@ -273,13 +273,14 @@
   background: #ffffff;
   color: #4b4b4b;
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 10px 18px;
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   line-height: 1.35;
-  text-align: center;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .quickQuestionBtn:hover {
@@ -288,29 +289,28 @@
   box-shadow: 0 6px 12px rgba(80, 180, 255, 0.12);
 }
 
-.quickQuestionBtn:nth-child(1),
-.quickQuestionBtn:nth-child(2),
-.quickQuestionBtn:nth-child(3),
-.quickQuestionBtn:nth-child(4),
-.quickQuestionBtn:nth-child(9),
-.quickQuestionBtn:nth-child(10) {
-  min-width: 146px;
+
+/* CSS cho dropdown header */
+.quickHeader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2a7fff;
+  margin-bottom: 10px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.quickQuestionBtn:nth-child(5) {
-  min-width: 238px;
+.arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
 }
 
-.quickQuestionBtn:nth-child(6) {
-  min-width: 220px;
-}
-
-.quickQuestionBtn:nth-child(7) {
-  min-width: 258px;
-}
-
-.quickQuestionBtn:nth-child(8) {
-  min-width: 225px;
+.arrow.up {
+  transform: rotate(180deg);
 }
 
 .messageList {
@@ -353,6 +353,53 @@
   color: #333;
   border: 1px solid #ececec;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.quickQuestionWrapperCompact {
+  width: 100%;
+  margin-top: 14px;
+  padding-top: 8px;
+}
+
+.quickHeaderCompact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2a7fff;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 10px;
+}
+
+.quickQuestionListCompact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.quickQuestionBtnCompact {
+  border: 1.5px solid #a8dbff;
+  background: #ffffff;
+  color: #4b4b4b;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.35;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.quickQuestionBtnCompact:hover {
+  background: #f1faff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(80, 180, 255, 0.12);
 }
 
 .chatFooter {
@@ -399,6 +446,9 @@
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   mask-composite: exclude;
 }
 
